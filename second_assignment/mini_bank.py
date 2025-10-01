@@ -108,6 +108,7 @@ class Bank:
         
         if amount <= 0:
             print("Amount must be greater than 0.")
+            return
             
         if self.accounts[username]["balance"] >= amount:
             self.accounts[username]["balance"] -= amount
