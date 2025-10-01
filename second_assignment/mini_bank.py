@@ -170,23 +170,4 @@ def main():
             print("Invalid options")
 
 if __name__ == "__main__":
-    main()
-            
-    
-        
-                
-        
-            
-        
-                    
-            
-
-            
-            
-            
-                            
-            
-            
-            
-            
-            
+    main()      
