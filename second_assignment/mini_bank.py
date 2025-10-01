@@ -1,26 +1,30 @@
 # Mini Bank Cli application with file Handling
 
-import json, os
-
 class Bank:
-    def __init__(self, file_path="accounts.json"):
-        self.file_path = file_path
+    def __init__(self):
+        self.accounts_file = "accounts.txt"
         self.accounts = self.load_accounts()
         
     # File Handling
     def load_accounts(self):
-        if not os.path.exists(self.file_path):
-            return {}
+        accounts = {}
         try:
-            with open(self.file_path, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except json.JSONDecodeError:
-            return {}
+            with open(self.accounts_file, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line:
+                        username, password, balance = line.split(",")
+                        accounts[username] = {"password": password, "balance": float(balance)}
+        except FileNotFoundError:
+            pass
+        return accounts
+
         
     # save accounts method with file handling   
     def save_accounts(self):
-        with open(self.file_path, "w", encoding="utf-8") as f:
-            json.dump(self.accounts, f, indent=2)
+        with open(self.accounts_file, "w", encoding="utf-8") as f:
+            for username, acc in self.accounts.items():
+                f.write(f"{username}, {acc['password']},{acc['balance']}\n")
 
     # Register method
     def register(self):
