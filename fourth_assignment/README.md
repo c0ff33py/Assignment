@@ -24,3 +24,12 @@ python manage.py migrate
 
 ### Run the development server
 python manage.py runserver
+
+### Android 
+- first install termux from app store
+- in terminal 'pkg install git'
+- ``git clone https://github.com/c0ff33py/Assignment.git``
+- cd Assignment/fourth_assignment
+- `pkg install python`
+- run `python manage.py runserver`
+- then copy link 'http://127.0.0.1:8000/' to browser
